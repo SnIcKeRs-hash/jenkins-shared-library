@@ -1,11 +1,28 @@
 def call(Map config = [:]) {
-    // This echo is outside any blocks to ensure it prints to console immediately
-    echo "--- EXECUTING SHARED LIBRARY: ciPipeline ---"
-    
-    node {
-        stage('Simulation') {
-            echo "Successfully running on a Jenkins node!"
-            sh "echo 'Hello from the Shared Library simulation stage'"
+    pipeline {
+        agent any 
+        stages {
+            stage('Checkout') {
+                steps {
+                    sh "echo 'SIMULATION: Cloning repository...'"
+                }
+            }
+            stage('Build') {
+                steps {
+                    sh "echo 'SIMULATION: Building project...'"
+                }
+            }
+            stage('Test') {
+                steps {
+                    sh 'echo "SIMULATION: Running tests..."'
+                }
+            }
+            stage('Deploy') {
+                steps {
+                    // FIX: Ensure the outer quotes are double (") so ${} works
+                    sh "echo 'Successfully deployed'"
+                }
+            }
         }
     }
 }
