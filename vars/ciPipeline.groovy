@@ -1,25 +1,13 @@
 def call(Map config = [:]) {
+    // This echo MUST appear in logs if the library is working
+    echo "--- LIBRARY LOG: ciPipeline has been triggered ---"
+
     pipeline {
-        agent any 
+        agent any
         stages {
-            stage('Checkout') {
+            stage('Simulation') {
                 steps {
-                    sh "echo 'SIMULATION: Cloning repository...'"
-                }
-            }
-            stage('Build') {
-                steps {
-                    sh "echo 'SIMULATION: Building project...'"
-                }
-            }
-            stage('Test') {
-                steps {
-                    sh "echo 'SIMULATION: Running tests...'"
-                }
-            }
-            stage('Deploy') {
-                steps {
-                    sh "echo 'Successfully deployed'"
+                    echo 'Running Simulation...'
                 }
             }
         }
