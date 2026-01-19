@@ -1,9 +1,11 @@
 def call(Map config = [:]) {
-    // This is scripted Jenkins logic, which is more robust for libraries
+    // This echo is outside any blocks to ensure it prints to console immediately
+    echo "--- EXECUTING SHARED LIBRARY: ciPipeline ---"
+    
     node {
         stage('Simulation') {
-            echo "--- SUCCESS: The library is officially working! ---"
-            sh "echo 'Cloning from ${config.repo ?: 'default repo'}'"
+            echo "Successfully running on a Jenkins node!"
+            sh "echo 'Hello from the Shared Library simulation stage'"
         }
     }
 }
