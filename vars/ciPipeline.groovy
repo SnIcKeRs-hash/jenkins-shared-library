@@ -14,12 +14,11 @@ def call(Map config = [:]) {
             }
             stage('Test') {
                 steps {
-                    sh 'echo "SIMULATION: Running tests..."'
+                    sh "echo 'SIMULATION: Running tests...'"
                 }
             }
             stage('Deploy') {
                 steps {
-                    // FIX: Ensure the outer quotes are double (") so ${} works
                     sh "echo 'Successfully deployed'"
                 }
             }
