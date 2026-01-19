@@ -1,15 +1,9 @@
 def call(Map config = [:]) {
-    // This echo MUST appear in logs if the library is working
-    echo "--- LIBRARY LOG: ciPipeline has been triggered ---"
-
-    pipeline {
-        agent any
-        stages {
-            stage('Simulation') {
-                steps {
-                    echo 'Running Simulation...'
-                }
-            }
+    // This is scripted Jenkins logic, which is more robust for libraries
+    node {
+        stage('Simulation') {
+            echo "--- SUCCESS: The library is officially working! ---"
+            sh "echo 'Cloning from ${config.repo ?: 'default repo'}'"
         }
     }
 }
